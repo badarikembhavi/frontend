@@ -13,6 +13,7 @@ import AuthWrapper from "../components/AuthWrapper";
 import AuthCard from "../components/AuthCard";
 import AuthBackground from "../assests/Images/AuthBackground";
 import AuthSocButton from "../components/AuthSocButton";
+import { Navigate } from "react-router-dom";
 // import Icon from "../pages/Icon";
 // import Email from "../pages/Email";
 
@@ -24,6 +25,10 @@ const LoginRoutes = {
     path: '/',
     // element: <MainLayout/>,
     children: [
+        {
+            path: '',  
+            element: <Navigate to="/login" replace />  
+        },
         {
             path: 'login',
             element: <AuthLogin/>
