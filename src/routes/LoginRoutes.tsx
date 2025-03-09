@@ -1,63 +1,48 @@
+// First, import everything at the top
 import { lazy } from "react";
 import Loadable from "../components/Loadable";
-import path from "path";
-import UseAvatar from "../pages/UserProfile";
-import Dashboard from "../pages/Dashboard";
-import Layout from "../components/Layout";
-import MainLayout from "../layout/Main-layout";
-
-import MainCard from "../components/MainCard";
-import ApplicationPage from "../pages/ApplicationPage";
-import AuthDivider from "../components/AuthDivider";
-import AuthWrapper from "../components/AuthWrapper";
-import AuthCard from "../components/AuthCard";
-import AuthBackground from "../assests/Images/AuthBackground";
-import AuthSocButton from "../components/AuthSocButton";
 import { Navigate } from "react-router-dom";
-// import Icon from "../pages/Icon";
-// import Email from "../pages/Email";
+import Layout from "../components/Layout"; 
+import MainCard from "../components/MainCard"; 
+import HomePage from "../pages/HomePage";
+
+// Lazy-loaded components (Keep all imports at the top)
+const AuthLogin = Loadable(lazy(() => import("../pages/Login")));
+const Dashboard = Loadable(lazy(() => import("../pages/Dashboard")));
+const UseAvatar = Loadable(lazy(() => import("../pages/UserProfile")));
+const ApplicationPage = Loadable(lazy(() => import("../pages/ApplicationPage")));
 
 
-const AuthLogin = Loadable(lazy(() => import('../pages/Login')));
+// Route Configuration
+const LoginRoutes = [
+  {
+    path: "/",
+    element: <Navigate to="/login" replace />,
+  },
 
+  // Public Route (No Sidebar)
+  {
+    path: "login",
+    element: <AuthLogin />,
+  },
 
-const LoginRoutes = {
+  {
     path: '/',
-    // element: <MainLayout/>,
     children: [
         {
-            path: '',  
-            element: <Navigate to="/login" replace />  
-        },
-        {
-            path: 'login',
-            element: <AuthLogin/>
-        },
-        {
-            path: 'account',
-            element: <UseAvatar/>
-        },
-        {
-            path: 'dashboard',
-            element: <Dashboard/>
-        },
-        {
-            path: 'application',
-            element: <ApplicationPage/>
-        },
-        {
-            path: 'maincard',
-            element: <MainCard/>
-        },
-        // {
-        //     path: 'icon',
-        //     element: <Icon/>
-        // },
-        {
-            path: 'divider',
-            element: <AuthCard/>
-        }
+            path: "/",
+            element: <Layout />,  // This applies the layout with sidebar to these routes
+            children: [
+              { path: "dashboard", element: <Dashboard /> },
+              { path: "account", element: <UseAvatar /> },
+              { path: "application", element: <ApplicationPage /> },
+              {path:'maincard',element: <MainCard/>},
+              {path:'home',element: <HomePage/>},
+              
+            ],
+          },
     ]
-}
+  }
+];
 
-export default LoginRoutes
+export default LoginRoutes;

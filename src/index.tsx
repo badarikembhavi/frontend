@@ -5,12 +5,15 @@ import { Provider } from 'react-redux';
 import { store } from './store';  
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
+import { JWTProvider } from './contexts/JWTContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
+    <JWTProvider>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </JWTProvider>
   </Provider>
 );

@@ -4,9 +4,9 @@ import { styled } from "@mui/system";
 import { Eye } from "iconsax-react";
 
 const StyledIconButton = styled(IconButton)({
-  width: 40, // Square shape
+  width: 40, 
   height: 40,
-  borderRadius: 2, // Rounded edges
+  borderRadius: 2, 
   border: "1px solid grey",
   backgroundColor: "white",
   "&:hover": {

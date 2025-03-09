@@ -1,6 +1,8 @@
 import { useState } from "react";
-import MainCard, {MainCardProps} from "./MainCard";
+import MainCard from "./MainCard";
+
 import { Box } from "@mui/material";
+import { MainCardProps } from "../types/root";
 
 
 const AuthCard = ({children, ...other}: MainCardProps) => (

@@ -9,7 +9,7 @@ const ApplicationPage = () => {
     return (
         <>
         <MainCard
-        title = 'Application' 
+        cardTitle = 'Application' 
         secondary = {
             <>
             <Box display='flex' flexDirection='row' alignItems='center'>

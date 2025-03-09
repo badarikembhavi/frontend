@@ -1,44 +1,37 @@
-import { ReactNode } from 'react';
-
-// material-ui
-import { Box, Grid } from '@mui/material';
-
-// project-imports
-import AuthCard from './AuthCard';
-
-// assets
-import AuthBackground from '../assests/Images/AuthBackground';
+import { ReactNode } from "react";
+import { Box, Grid } from "@mui/material";
+import AuthBackground from "../assests/Images/AuthBackground";
+import AuthCard from "./AuthCard";
 
 interface Props {
   children: ReactNode;
 }
 
-// ==============================|| AUTHENTICATION - WRAPPER ||============================== //
-
 const AuthWrapper = ({ children }: Props) => (
-  <Box sx={{ minHeight: '100vh' }}>
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "auto", 
+      px: 2,
+    }}
+  >
     <AuthBackground />
-    <Grid
-      container
-      direction="column"
-      justifyContent="center"
-      sx={{
-        minHeight: '100vh'
-      }}
-    >
-      <Grid item xs={12}>
-        <Grid
-          item
-          xs={12}
-          container
-          justifyContent="center"
-          alignItems="center"
-          sx={{ minHeight: { xs: 'calc(100vh - 210px)', sm: 'calc(100vh - 134px)', md: 'calc(100vh - 112px)' } }}
+    <Grid container justifyContent="center">
+      <Grid item>
+        <AuthCard
+          sx={{
+            maxWidth: 400, // Restricts form width
+            width: "100%", // Keeps it responsive
+            p: 3,
+            bgcolor: "background.paper",
+            borderRadius: 2,
+            boxShadow: 3,
+          }}
         >
-          <Grid item>
-            <AuthCard>{children}</AuthCard>
-          </Grid>
-        </Grid>
+          {children}
+        </AuthCard>
       </Grid>
     </Grid>
   </Box>
